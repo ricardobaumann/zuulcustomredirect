@@ -1,0 +1,17 @@
+# Spring properties
+spring:
+  profiles: default
+  application:
+     name: proxy  # Service registers under this name
+
+zuul:
+  ignored-services: "*"
+  routes:
+    posts:
+      path: /posts/*
+      url: http://localhost:8081/
+      stripPrefix: false
+    comments:
+      path: /posts/*/comments
+      url: http://localhost:8082/
+      stripPrefix: false
